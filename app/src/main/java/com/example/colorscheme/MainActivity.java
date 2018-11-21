@@ -11,3 +11,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 }
+//nouns & verbs ~1000, adj ~2000, preps ~50, punc ~30
