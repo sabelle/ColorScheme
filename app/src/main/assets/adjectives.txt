@@ -474,7 +474,6 @@ emotional
 empty
 enchanted
 enchanting
-
 encouraging
 endurable
 energetic
@@ -775,7 +774,6 @@ horrific
 hospitable
 hot
 huge
-
 hulking
 humble
 humdrum
