@@ -7,10 +7,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Main class for app, takes the a song title & artist name.
+ */
 public class MainActivity extends AppCompatActivity {
-    EditText song, artist;
+    /** Variable for song title. */
+    EditText song;
+
+    /** Variable for artist name. */
+    EditText artist;
+
+    /** Variable for generate button. */
     Button colorButton;
 
+    /**
+     * Run when this activity comes to the foreground.
+     * @param savedInstanceState unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,23 +36,15 @@ public class MainActivity extends AppCompatActivity {
         colorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String output = song.getText().toString() + " by " + artist.getText().toString();
                 Intent intent = new Intent(MainActivity.this, ColorActivity.class);
-                intent.putExtra("message", output);
-                startActivity(intent);
+                //for the API implementation
+                intent.putExtra("song", song.getText().toString());
+                intent.putExtra("artist", artist.getText().toString());
 
-                //intent.putExtra(inputArtist.getEditText().toString(), artist);
-                //intent.putExtra(inputSong.getEditText().toString(), song);
+                //for the heading on colorActivity page
+                intent.putExtra("message", song.getText().toString() + " by " + artist.getText().toString());
+                startActivity(intent);
             }
         });
     }
-
-    /*
-    public String getArtist() {
-        return artist;
-    }
-
-    public String getSong() {
-        return song;
-    }*/
 }
