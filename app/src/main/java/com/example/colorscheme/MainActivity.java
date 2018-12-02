@@ -7,6 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.omt.lyrics.SearchLyrics;
+import com.omt.lyrics.beans.Lyrics;
+import com.omt.lyrics.beans.LyricsServiceBean;
+import com.omt.lyrics.beans.SearchLyricsBean;
+import com.omt.lyrics.exception.SearchLyricsException;
+
+import java.util.List;
+
 /**
  * Main class for app, takes the a song title & artist name.
  */
@@ -41,10 +49,31 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("song", song.getText().toString());
                 intent.putExtra("artist", artist.getText().toString());
 
-                //for the heading on colorActivity page
-                intent.putExtra("message", song.getText().toString() + " by " + artist.getText().toString());
+                //for the heading on colorActivity page and to print out lyrics
+                intent.putExtra("message", song.getText().toString() + " by " + artist.getText().toString() + "\n"
+                        + getLyrics());
                 startActivity(intent);
             }
         });
+    }
+    /** Call API to generate lyrics
+     */
+    public String getLyrics() {
+        // call API to generate lyrics
+        SearchLyrics searchLyrics = new SearchLyrics();
+        LyricsServiceBean bean = new LyricsServiceBean();
+        bean.setSongName(song.getText().toString());
+        bean.setSongArtist(artist.getText().toString());
+        List<Lyrics> lyrics;
+        try {
+            lyrics = searchLyrics.searchLyrics(bean);
+            for (Lyrics lyric : lyrics) {
+                return lyric.getText();
+            }
+        } catch (SearchLyricsException e) {
+            e.printStackTrace();
+            return "Song and corresponding artist does not exist.\nPlease double check song title and artist name and try again.";
+        }
+        return null;
     }
 }

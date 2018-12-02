@@ -11,6 +11,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.omt.lyrics.SearchLyrics;
+import com.omt.lyrics.beans.SearchLyricsBean;
 
 
 import org.json.JSONException;
@@ -43,14 +45,14 @@ public class ColorActivity extends AppCompatActivity {
         message = findViewById(R.id.message);
         message.setText(getIntent().getStringExtra("message"));
 
-        //API implementation
-        //https://api.lyrics.ovh/v1/artist/song
-        String song = getIntent().getStringExtra("song");
-        String artist = getIntent().getStringExtra("artist");
-
-        // Setting up queue for API request
-        requestQueue = Volley.newRequestQueue(this);
-        startAPICall(song, artist);
+//        //API implementation
+//        //https://api.lyrics.ovh/v1/artist/song
+//        String song = getIntent().getStringExtra("song");
+//        String artist = getIntent().getStringExtra("artist");
+//
+//        // Setting up queue for API request
+//        requestQueue = Volley.newRequestQueue(this);
+//        startAPICall(song, artist);
     }
 
     /**
@@ -61,43 +63,43 @@ public class ColorActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    /**
-     * Make a call to the lyrics API.
-     * @param song title
-     * @param artist name
-     */
-    void startAPICall(final String song, final String artist) {
-        try {
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.GET,
-                    "https://api.lyrics.ovh/v1/" + artist + "/" + song + "/json",
-                    null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(final JSONObject response) {
-                            apiCallDone(response);
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(final VolleyError error) {
-                    Log.e(TAG, error.toString());
-                }
-            });
-            jsonObjectRequest.setShouldCache(false);
-            requestQueue.add(jsonObjectRequest);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Handle response from lyrics API.
-     * @param response from lyrics API.
-     */
-    void apiCallDone(final JSONObject response) {
-        try {
-            Log.d(TAG, response.toString(2));
-            Log.i(TAG, response.get("host").toString());
-        } catch (JSONException ignored) { }
-    }
+//    /**
+//     * Make a call to the lyrics API.
+//     * @param song title
+//     * @param artist name
+//     */
+//    void startAPICall(final String song, final String artist) {
+//        try {
+//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                    Request.Method.GET,
+//                    "https://api.lyrics.ovh/v1/" + artist + "/" + song + "/json",
+//                    null,
+//                    new Response.Listener<JSONObject>() {
+//                        @Override
+//                        public void onResponse(final JSONObject response) {
+//                            apiCallDone(response);
+//                        }
+//                    }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(final VolleyError error) {
+//                    Log.e(TAG, error.toString());
+//                }
+//            });
+//            jsonObjectRequest.setShouldCache(false);
+//            requestQueue.add(jsonObjectRequest);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    /**
+//     * Handle response from lyrics API.
+//     * @param response from lyrics API.
+//     */
+//    void apiCallDone(final JSONObject response) {
+//        try {
+//            Log.d(TAG, response.toString(2));
+//            Log.i(TAG, response.get("host").toString());
+//        } catch (JSONException ignored) { }
+//    }
 }

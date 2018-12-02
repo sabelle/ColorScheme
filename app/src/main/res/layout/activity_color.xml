@@ -9,18 +9,21 @@
     <TextView
         android:id="@+id/message"
         android:layout_width="match_parent"
-        android:layout_height="39dp"
+        android:layout_height="246dp"
         android:layout_marginStart="61dp"
         android:layout_marginLeft="61dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="42dp"
         android:layout_marginRight="42dp"
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
         android:text="Song Name by Artist"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/color1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/color1"
