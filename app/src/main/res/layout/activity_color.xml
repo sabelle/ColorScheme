@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/return_text"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="39dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginLeft="61dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="42dp"
         android:layout_marginRight="42dp"
@@ -19,7 +19,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center" />
 
     <View
         android:id="@+id/color1"
