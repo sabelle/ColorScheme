@@ -1,8 +1,10 @@
 package com.example.colorscheme;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,15 @@ import com.omt.lyrics.beans.SearchLyricsBean;
 import com.omt.lyrics.exception.SearchLyricsException;
 
 import java.util.List;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Main class for app, takes the a song title & artist name.
@@ -32,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
      * Run when this activity comes to the foreground.
      * @param savedInstanceState unused
      */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,31 +61,29 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("song", song.getText().toString());
                 intent.putExtra("artist", artist.getText().toString());
 
-                //for the heading on colorActivity page and to print out lyrics
-                intent.putExtra("message", song.getText().toString() + " by " + artist.getText().toString() + "\n"
-                        + getLyrics());
+//                //for the heading on colorActivity page and to print out lyrics
+                intent.putExtra("message", song.getText().toString() + " by " + artist.getText().toString());
+//                + "\n"
+//                        + getLyrics());
+
+
                 startActivity(intent);
+                MyAsyncTask asyncTask = new MyAsyncTask();//
+                /* new MyAsyncTask(new MyAsyncTask.AsyncResponse() {
+
+                    //@Override
+                    public void processFinish(String output) {
+                        Log.d("Async task response: ", (output));
+                        colorButton.setText(output);
+                    }
+                });*/
+                try {
+                    asyncTask.startAPICall(song.getText().toString(), artist.getText().toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                //asyncTask.execute();
             }
         });
-    }
-    /** Call API to generate lyrics
-     */
-    public String getLyrics() {
-        // call API to generate lyrics
-        SearchLyrics searchLyrics = new SearchLyrics();
-        LyricsServiceBean bean = new LyricsServiceBean();
-        bean.setSongName(song.getText().toString());
-        bean.setSongArtist(artist.getText().toString());
-        List<Lyrics> lyrics;
-        try {
-            lyrics = searchLyrics.searchLyrics(bean);
-            for (Lyrics lyric : lyrics) {
-                return lyric.getText();
-            }
-        } catch (SearchLyricsException e) {
-            e.printStackTrace();
-            return "Song and corresponding artist does not exist.\nPlease double check song title and artist name and try again.";
-        }
-        return null;
     }
 }

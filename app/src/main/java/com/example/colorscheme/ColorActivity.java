@@ -1,22 +1,16 @@
 package com.example.colorscheme;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.Volley;
 import com.android.volley.RequestQueue;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.omt.lyrics.SearchLyrics;
-import com.omt.lyrics.beans.SearchLyricsBean;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 /**
@@ -32,6 +26,8 @@ public class ColorActivity extends AppCompatActivity {
     /** Message at top of screen. */
     TextView message;
 
+
+
     /**
      * Run when this activity comes to the foreground.
      * @param savedInstanceState unused
@@ -41,6 +37,7 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
 
+
         //text display "Song" by Artist
         message = findViewById(R.id.message);
         message.setText(getIntent().getStringExtra("message"));
@@ -49,10 +46,17 @@ public class ColorActivity extends AppCompatActivity {
 //        //https://api.lyrics.ovh/v1/artist/song
 //        String song = getIntent().getStringExtra("song");
 //        String artist = getIntent().getStringExtra("artist");
-//
-//        // Setting up queue for API request
-//        requestQueue = Volley.newRequestQueue(this);
-//        startAPICall(song, artist);
+
+    }
+    public String getArtist() {
+        message = findViewById(R.id.message);
+        message.setText(getIntent().getStringExtra("message"));
+        return getIntent().getStringExtra("artist");
+    }
+    public String getSong() {
+        message = findViewById(R.id.message);
+        message.setText(getIntent().getStringExtra("message"));
+        return getIntent().getStringExtra("song");
     }
 
     /**
@@ -62,44 +66,5 @@ public class ColorActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
     }
-
-//    /**
-//     * Make a call to the lyrics API.
-//     * @param song title
-//     * @param artist name
-//     */
-//    void startAPICall(final String song, final String artist) {
-//        try {
-//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-//                    Request.Method.GET,
-//                    "https://api.lyrics.ovh/v1/" + artist + "/" + song + "/json",
-//                    null,
-//                    new Response.Listener<JSONObject>() {
-//                        @Override
-//                        public void onResponse(final JSONObject response) {
-//                            apiCallDone(response);
-//                        }
-//                    }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(final VolleyError error) {
-//                    Log.e(TAG, error.toString());
-//                }
-//            });
-//            jsonObjectRequest.setShouldCache(false);
-//            requestQueue.add(jsonObjectRequest);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    /**
-//     * Handle response from lyrics API.
-//     * @param response from lyrics API.
-//     */
-//    void apiCallDone(final JSONObject response) {
-//        try {
-//            Log.d(TAG, response.toString(2));
-//            Log.i(TAG, response.get("host").toString());
-//        } catch (JSONException ignored) { }
-//    }
 }
+
