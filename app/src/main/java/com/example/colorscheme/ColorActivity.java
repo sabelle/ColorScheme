@@ -12,25 +12,25 @@ public class ColorActivity extends AppCompatActivity {
     /** Message at top of screen. */
     TextView message;
 
-    /** Message displayed if error occurs */
+    /** Message displayed if error occurs. */
     TextView error;
 
-    /** View component for color1 */
+    /** View component for color1. */
     View firstColor;
 
-    /** View component for color2 */
+    /** View component for color2. */
     View secondColor;
 
-    /** View component for color3 */
+    /** View component for color3. */
     View thirdColor;
 
-    /** color1 as an int */
+    /** Color1 as an int. */
     int color1;
 
-    /** color2 as an int */
+    /** Color2 as an int. */
     int color2;
 
-    /** color3 as an int */
+    /** Color3 as an int. */
     int color3;
 
     /**

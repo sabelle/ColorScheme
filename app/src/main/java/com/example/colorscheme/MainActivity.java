@@ -43,16 +43,16 @@ public class MainActivity extends AppCompatActivity {
     /** Default logging tag for messages from the main activity. */
     private static final String TAG = "Color Scheme";
 
-    /** String of lyrics */
+    /** String of lyrics. */
     private static String lyrics;
 
-    /** Hexadecimal representation of lyrics */
+    /** Hexadecimal representation of lyrics. */
     public static String hexa1;
 
-    /** Hexadecimal representation of song title */
+    /** Hexadecimal representation of song title. */
     public static String hexa2;
 
-    /** Hexadecimal representation of song artist */
+    /** Hexadecimal representation of song artist. */
     public static String hexa3;
 
     /**
