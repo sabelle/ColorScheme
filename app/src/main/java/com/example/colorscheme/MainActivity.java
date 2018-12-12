@@ -134,11 +134,11 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < input.length() - 2; i++) {
             if (i == 0) {
                 input = input.substring(0, 1).toUpperCase()
-                        + input.substring(1);
+                        + input.substring(1).toLowerCase();
             } else if (input.substring(i, i + 1).equals(" ")) {
                 input = input.substring(0, i + 1)
                         + input.substring(i + 1, i + 2).toUpperCase()
-                        + input.substring(i + 2);
+                        + input.substring(i + 2).toLowerCase();
             }
         }
         if (type.equals("song")) {
