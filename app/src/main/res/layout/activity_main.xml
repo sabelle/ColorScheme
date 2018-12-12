@@ -28,7 +28,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="23dp"
         android:layout_marginRight="23dp"
-        android:text="Enter a song title and the song artist and a color palette will be generated."
+        android:text="Enter a song title and the song's artist to generate a color palette."
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:fontFamily="sans-serif-condensed"
         app:layout_constraintBottom_toTopOf="@+id/input_song"
