@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ColorActivity.class);
         intent.putExtra("message", strSong + " by " + strArtist);
         lyrics = inputLyrics;
-        hexa1 = "#" +  Integer.toHexString(song.getText().toString().hashCode()).toUpperCase();
-        hexa2 = "#" + Integer.toHexString(artist.getText().toString().hashCode()).toUpperCase();
+        hexa1 = "#" +  Integer.toHexString(strSong.hashCode()).toUpperCase();
+        hexa2 = "#" + Integer.toHexString(strArtist.hashCode()).toUpperCase();
         hexa3 = "#" + Integer.toHexString(lyrics.hashCode()).toUpperCase();
         startActivity(intent);
     }
